@@ -10,7 +10,8 @@ import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BOARD)
  
 # Pin 18 (GPIO 24) als Eingang festlegen
-GPIO.setup(18, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
+channel = 18
+GPIO.setup(channel , GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
  
 # Schleifenzähler
 i = 0
@@ -31,9 +32,10 @@ def doIfHigh(channel):
     i = i + 1
  
 # Ereignis deklarieren
-channel = 18
+
 GPIO.add_event_detect(channel, GPIO.BOTH, callback = doIfHigh, bouncetime = 500)
  
 # Eigentlicher Programmablauf
+print "Warte auf Eingang " + str(channel)
 while 1:
     time.sleep(0.1)
