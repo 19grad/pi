@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 #coding: utf8 
+
+# Python 2
  
 import RPi.GPIO as GPIO
  
@@ -17,6 +19,8 @@ while 1:
     # Eingang lesen
     if GPIO.input(18) == GPIO.HIGH:
         # Wenn Eingang HIGH ist, Ausgabe im Terminal erzeugen
-        print "Eingang HIGH " + str(i)
-        # Schleifenzähler erhöhen
-        i = i + 1
+        print "Eingang HIGH " + str(i) + "        \r",
+    else:
+        print "Eingang LOW  " + str(i) + "        \r",
+	# Schleifenzähler erhöhen
+    i = i + 1
